@@ -62,6 +62,19 @@ def binary_search(arr, low, high, x, debug=False):
         # Wrong high was passed so returning -1
         return -1
 
+# Pivoted binary search
+def geeks_pivoted_search(arr, n, key):
+    pivot = geeks_find_pivot(arr, 0, n - 1)
+
+    if pivot == -1:
+        return geeks_binary_search(arr, 0, n-1, key, True)
+
+    if arr[pivot] == key:
+        return pivot
+    if arr[0] <= key:
+        return geeks_binary_search(arr, 0, pivot - 1, key, True)
+    return geeks_binary_search(arr, pivot + 1, n -1, key, True)
+
 
 if __name__ == "__main__":
     arr = [12,14,18,2, 3, 6,8,9]
@@ -82,3 +95,8 @@ if __name__ == "__main__":
 
     result = geeks_find_pivot(arr, 0, len(arr) -1, True)
     print("The result for pivot is ", result)
+    result = geeks_pivoted_search(arr, len(arr), x)
+    if result != -1:
+        print("The element is found in index ", result, " value is ", arr[result], " matches with value passed ", x)
+    else:
+        print("The value not found")
