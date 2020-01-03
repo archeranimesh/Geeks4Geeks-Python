@@ -12,13 +12,16 @@ def geeks_find_pivot(arr, low, high, debug=False):
 
     mid = int((low + high)/2)
 
+    if debug:
+        print("arr = ", arr, " low ", low, " high ", high, " mid ", mid, " arr[mid] ", arr[mid], " arr[mid + 1] ", arr[mid+1], " arr[low] ", arr[low], " arr[mid -1] ", arr[mid-1])
+
     if mid < high and arr[mid] > arr[mid +1]:
         return mid
     if mid > low and arr[mid] < arr[mid -1]:
         return mid -1
     if arr[low] >= arr[mid]:
-        return geeks_find_pivot(arr, low, mid - 1)
-    return geeks_find_pivot(arr, mid + 1, high)
+        return geeks_find_pivot(arr, low, mid - 1, debug)
+    return geeks_find_pivot(arr, mid + 1, high, debug)
 
 # Geeks for Geeks Binary Search
 def geeks_binary_search(arr, low, high, key):
@@ -61,7 +64,7 @@ def binary_search(arr, low, high, x, debug=False):
 
 
 if __name__ == "__main__":
-    arr = [12,14,18,21, 3, 6,8,9]
+    arr = [12,14,18,2, 3, 6,8,9]
     binary_arr = [3,6,8,9,12,14,18,21]
     x = 18
     result = binary_search(binary_arr, 0, len(binary_arr) - 1, x, True)
@@ -77,5 +80,5 @@ if __name__ == "__main__":
     else:
         print("The value not found")
 
-    result = geeks_find_pivot(arr, 0, len(arr) -1)
+    result = geeks_find_pivot(arr, 0, len(arr) -1, True)
     print("The result for pivot is ", result)
