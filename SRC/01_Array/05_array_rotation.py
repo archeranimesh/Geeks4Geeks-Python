@@ -3,7 +3,22 @@
 # https://www.geeksforgeeks.org/python-program-for-binary-search/
 # https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
 
+# Geeks for Geeks Pivoted index
+def geeks_find_pivot(arr, low, high, debug=False):
+    if high < low:
+        return -1
+    if high == low:
+        return low
 
+    mid = int((low + high)/2)
+
+    if mid < high and arr[mid] > arr[mid +1]:
+        return mid
+    if mid > low and arr[mid] < arr[mid -1]:
+        return mid -1
+    if arr[low] >= arr[mid]:
+        return geeks_find_pivot(arr, low, mid - 1)
+    return geeks_find_pivot(arr, mid + 1, high)
 
 # Geeks for Geeks Binary Search
 def geeks_binary_search(arr, low, high, key):
@@ -48,7 +63,7 @@ def binary_search(arr, low, high, x, debug=False):
 if __name__ == "__main__":
     arr = [12,14,18,21, 3, 6,8,9]
     binary_arr = [3,6,8,9,12,14,18,21]
-    x = 8
+    x = 18
     result = binary_search(binary_arr, 0, len(binary_arr) - 1, x, True)
 
     if result != -1:
@@ -61,3 +76,6 @@ if __name__ == "__main__":
         print("The element is found in index ", result, " value is ", binary_arr[result], " matches with value passed ", x)
     else:
         print("The value not found")
+
+    result = geeks_find_pivot(arr, 0, len(arr) -1)
+    print("The result for pivot is ", result)
