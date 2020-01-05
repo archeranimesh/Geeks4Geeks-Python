@@ -5,6 +5,20 @@
 
 
 
+# Geeks for Geeks Binary Search
+def geeks_binary_search(arr, low, high, key):
+    if high < low:
+        return -1
+
+    mid = int((low + high)/2)
+
+    if key == arr[mid]:
+        return mid
+    if key > arr[mid]:
+        return geeks_binary_search(arr, (mid + 1), high, key)
+
+    return geeks_binary_search(arr, low, (mid -1), key)
+
 # Normal Binary Search Function.
 def binary_search(arr, low, high, x, debug=False):
     if debug:
@@ -37,6 +51,12 @@ if __name__ == "__main__":
     x = 8
     result = binary_search(binary_arr, 0, len(binary_arr) - 1, x, True)
 
+    if result != -1:
+        print("The element is found in index ", result, " value is ", binary_arr[result], " matches with value passed ", x)
+    else:
+        print("The value not found")
+
+    result = geeks_binary_search(binary_arr, 0, len(binary_arr) - 1, x)
     if result != -1:
         print("The element is found in index ", result, " value is ", binary_arr[result], " matches with value passed ", x)
     else:
