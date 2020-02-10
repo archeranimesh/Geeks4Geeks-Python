@@ -1,4 +1,6 @@
 # Program to cyclically rotate an array by one
+# https://www.geeksforgeeks.org/c-program-cyclically-rotate-array-one/
+# 4. Program to cyclically rotate an array by one
 
 def rotate(arr):
     n = len(arr)

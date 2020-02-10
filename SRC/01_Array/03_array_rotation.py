@@ -1,4 +1,6 @@
 # This is the same array rotation program using reversing an Array.
+# https://www.geeksforgeeks.org/program-for-array-rotation-continued-reversal-algorithm/
+# 2. Reversal algorithm for array rotation
 
 # Reverse the array within the start and end index
 def reverse_array(arr, start, end):

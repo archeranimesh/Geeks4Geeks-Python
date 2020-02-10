@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/array-rotation/
+# 1. Program for array rotation
 arr = [1,2,3,4,5,6,7]
 
 n = len(arr)
